@@ -10,7 +10,6 @@ class App:
         self.reproductor = ReproductorDeMusica()
 
         self.master.title("Reproductor de Música")
-
         # Crear widgets de la interfaz
         self.nombre_lista_entry = tk.Entry(master)
         self.nombre_lista_entry.pack()
