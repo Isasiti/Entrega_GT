@@ -37,7 +37,8 @@ class App:
 
         self.detener_button = tk.Button(master, text="Detener", command=self.reproductor.detener_cancion)
         self.detener_button.pack()
-
+        self.mostrar_canciones_button = tk.Button(master, text="Mostrar Canciones de Lista", command=self.mostrar_canciones_de_lista)
+        self.mostrar_canciones_button.pack()
         self.resultado_text = tk.Text(master, height=15, width=50)
         self.resultado_text.pack()
 
@@ -59,3 +60,4 @@ class App:
         nombre_lista = self.nombre_lista_entry.get()
         resultado = self.reproductor.agregar_lista_a_cola(nombre_lista)
         self.resultado_text.insert(tk.END, resultado + '\n')
+    

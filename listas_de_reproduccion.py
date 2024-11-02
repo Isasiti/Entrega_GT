@@ -42,3 +42,23 @@ class ReproductorDeMusica:
             except ValueError:
                 return f"La canción con ID {cancion_id} no está en la lista '{nombre_lista}'."
         return f"La lista '{nombre_lista}' no existe."
+    def mostrar_canciones_de_lista(self, nombre_lista):
+        """
+        Retorna las canciones de la lista de reproducción especificada.
+        """
+        if nombre_lista in self.listas_de_reproduccion:
+            canciones = self.listas_de_reproduccion[nombre_lista]
+            return f"Canciones en la lista '{nombre_lista}':\n" + "\n".join(f"{idx + 1}. {cancion}" for idx, cancion in enumerate(canciones))
+        else:
+            return f"La lista '{nombre_lista}' no existe."
+    def mostrar_canciones_de_lista(self):
+        """
+        Obtiene el nombre de la lista desde la entrada y muestra sus canciones en el área de texto.
+        """
+        nombre_lista = self.nombre_lista_entry.get()
+        if nombre_lista:
+            resultado = self.reproductor.mostrar_canciones_de_lista(nombre_lista)
+            self.resultado_text.delete("1.0", tk.END)  # Limpiar el área de texto
+            self.resultado_text.insert(tk.END, resultado + "\n")
+        else:
+            messagebox.showerror("Error", "Por favor, ingresa el nombre de la lista de reproducción.")
